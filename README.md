@@ -12,18 +12,12 @@ This is a Python 3.5 script which you can use to log you times from *Wakatime*.
 
 *Wakatime* offers that with a `Free Plan` you can access your logged times for `1 week`.
 Unfortunately this means that your times will be lost after a week.
-So this is why I made this scrip. If you run it at least `once a week` you will have **ALL** your logged times.
-Of course, you can set up to run the script automatically when your computer starts, etc... (Use your imagination) :stuck_out_tongue_winking_eye:.
+So this is why I made this project. If you run it at least `once a week` you will have **ALL** your logged times.
+You don't need to run it manually, you can use *Heroku* and *Slack*.
 
-## Usuage
+## Usage
 
-Just update the `config.ini` file with your `Api Key` and the `start date` for the time logger.
-
-The start date is used for the first run.
-Don't worry if you don't remember the first date for the logging,
-it will recognize if a date is "valid", so it has time information stored.
-
-Than just run it: `python wakatime_logger.py`
+It is different for Manual and Heroku so you can find the steps for each option in their folder.
 
 ## TODO
 

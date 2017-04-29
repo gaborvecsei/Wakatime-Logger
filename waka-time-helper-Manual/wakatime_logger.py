@@ -6,7 +6,7 @@ import os
 import configparser
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('my_config.ini')
 
 FILE_NAME = config.get("Waka", "fileName")
 API_KEY = config.get("Waka", "apiKey")
@@ -54,12 +54,14 @@ def write_data_to_dataframe(df, start_date, end_date):
                 df.loc[last_df_index] = new_row
                 last_df_index += 1
         except KeyError as keyError:
-            print("[*] ERROR: for {0} key error: {1}".format(d.strftime("%Y-%m-%d"), keyError))
+            print("[*] ERROR: for {0}, key error: {1}".format(d.strftime("%Y-%m-%d"), keyError))
             print("This means that you can't see this day's records because you've exceeded the free Waka limit")
             print("Run this script at least once in a week to get all the records!")
 
+        print("Durations saved for: {0}".format(d.strftime("%Y-%m-%d")))
 
-if __name__ == "__main__":
+
+def run_the_program():
     if not os.path.exists(FILE_NAME):
         print("It looks like this is the first time you run this script!")
         print("This is the start date: {0}".format(START_DATE))
@@ -74,3 +76,6 @@ if __name__ == "__main__":
         df.to_csv(FILE_NAME)
 
     print("Data collection stopped!")
+
+run_the_program()
+
