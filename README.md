@@ -17,8 +17,8 @@ You don't need to run it manually, you can use *Heroku* and *Slack*.
 
 ## Usage
 
-- [with Heroku](https://github.com/gaborvecsei/WakaTime-Logger/tree/master/waka-time-helper-Heroku)
-- [Manual](https://github.com/gaborvecsei/WakaTime-Logger/tree/master/waka-time-helper-Manual)
+- [with Heroku](https://github.com/gaborvecsei/WakaTime-Logger/tree/master/wakatime-logger-Heroku)
+- [Manual](https://github.com/gaborvecsei/WakaTime-Logger/tree/master/wakatime-logger-Manual)
 
 ## TODO
 
