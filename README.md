@@ -8,7 +8,7 @@
 
 ## Info
 
-This is a Python 3.5 script which you can use to log you times from *Wakatime*.
+This is a Python script which you can use to log you times from *Wakatime*.
 
 *Wakatime* offers that with a `Free Plan` you can access your logged times for `1 week`.
 Unfortunately this means that your times will be lost after a week.
@@ -17,7 +17,8 @@ You don't need to run it manually, you can use *Heroku* and *Slack*.
 
 ## Usage
 
-It is different for Manual and Heroku so you can find the steps for each option in their folder.
+- [with Heroku](https://github.com/gaborvecsei/WakaTime-Logger/tree/master/waka-time-helper-Heroku)
+- [Manual](https://github.com/gaborvecsei/WakaTime-Logger/tree/master/waka-time-helper-Manual)
 
 ## TODO
 
