@@ -10,10 +10,12 @@
 
 This is a Python script which you can use to log you times from *Wakatime*.
 
-*Wakatime* offers that with a `Free Plan` you can access your logged times for `1 week`.
+*Wakatime* offers that with a `Free Plan` you can access your logged times for `2 weeks`.
 Unfortunately this means that your times will be hidden after a week and only accessible after upgrading to Premium.
 So this is why I made this project. If you run it at least `once a week` you will have **ALL** your logged times.
 You don't need to run it manually, you can use *Heroku* and *Slack*.
+
+Note: You can export your coding activity from the [WakaTime Settings page](https://wakatime.com/settings) even on the Free plan.
 
 ## Usage
 
