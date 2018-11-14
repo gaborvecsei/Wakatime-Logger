@@ -6,12 +6,12 @@ import os
 import configparser
 
 config = configparser.ConfigParser()
-config.read('my_config.ini')
+config.read('config.ini')
 
 FILE_NAME = config.get("Waka", "fileName")
 API_KEY = config.get("Waka", "apiKey")
 BASE_URL = config.get("Waka", "baseUrl")
-START_DATE = datetime.strptime(config.get("Waka", "startDate"), "%Y-%m-%d").date()
+START_DATE = str(datetime.strptime(config.get("Waka", "startDate"), "%Y-%m-%d").date())
 
 
 def prepare_request_header(api_key_in_bytes):
@@ -38,7 +38,7 @@ def write_data_to_dataframe(df, start_date, end_date):
         start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
         start_date = start_date + timedelta(days=1)
     for d in date_range(start_date, end_date):
-        response_json = get_durations_from_waka(d, prepare_request_header(str.encode(API_KEY)))
+        response_json = get_durations_from_waka(d, prepare_request_header(unicode.encode(API_KEY)))
         try:
             data = response_json["data"]
             data_dict = {}
