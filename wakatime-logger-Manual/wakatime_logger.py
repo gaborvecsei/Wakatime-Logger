@@ -38,7 +38,7 @@ def write_data_to_dataframe(df, start_date, end_date):
         start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
         start_date = start_date + timedelta(days=1)
     for d in date_range(start_date, end_date):
-        response_json = get_durations_from_waka(d, prepare_request_header(unicode.encode(API_KEY)))
+        response_json = get_durations_from_waka(d, prepare_request_header(str.encode(API_KEY)))
         try:
             data = response_json["data"]
             data_dict = {}
