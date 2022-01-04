@@ -67,10 +67,10 @@ def run_the_program():
         print("This is the start date: {0}".format(START_DATE))
         start_date = START_DATE
         df = pd.DataFrame(columns=["date", "project", "duration"])
-        write_data_to_dataframe(df, start_date, date.today() + timedelta(days=1))
+        write_data_to_dataframe(df, start_date, date.today())
         df.to_csv(FILE_NAME)
     else:
-        df = pd.DataFrame.from_csv(FILE_NAME, header=0)
+        df = pd.read_csv(FILE_NAME)
         # Here we don't need start_date because it is calculated from previous entries
         write_data_to_dataframe(df, START_DATE, date.today())
         df.to_csv(FILE_NAME)
