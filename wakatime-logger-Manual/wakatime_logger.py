@@ -1,12 +1,14 @@
-import requests
 import base64
-from datetime import timedelta, date, datetime
-import pandas as pd
-import os
 import configparser
+import os
+import sys
+from datetime import timedelta, date, datetime
+
+import pandas as pd
+import requests
 
 config = configparser.ConfigParser()
-config.read('my_config.ini')
+config.read('config.ini')
 
 FILE_NAME = config.get("Waka", "fileName")
 API_KEY = config.get("Waka", "apiKey")
@@ -20,8 +22,8 @@ def prepare_request_header(api_key_in_bytes):
     return headers
 
 
-def get_durations_from_waka(date, header):
-    req_url = BASE_URL + date.strftime("%Y-%m-%d")
+def get_durations_from_waka(waka_date, header):
+    req_url = BASE_URL + waka_date.strftime("%Y-%m-%d")
     response = requests.get(req_url, headers=header)
     return response.json()
 
@@ -61,21 +63,22 @@ def write_data_to_dataframe(df, start_date, end_date):
         print("Durations saved for: {0}".format(d.strftime("%Y-%m-%d")))
 
 
-def run_the_program():
+def main():
     if not os.path.exists(FILE_NAME):
         print("It looks like this is the first time you run this script!")
         print("This is the start date: {0}".format(START_DATE))
-        start_date = datetime.strptime(START_DATE, "%Y-%m-%d").date()
+        start_date = START_DATE
         df = pd.DataFrame(columns=["date", "project", "duration"])
         write_data_to_dataframe(df, start_date, date.today())
         df.to_csv(FILE_NAME)
     else:
-        df = pd.DataFrame.from_csv(FILE_NAME, header=0)
+        df = pd.read_csv(FILE_NAME)
         # Here we don't need start_date because it is calculated from previous entries
         write_data_to_dataframe(df, START_DATE, date.today())
         df.to_csv(FILE_NAME)
 
     print("Data collection stopped!")
 
-run_the_program()
 
+if __name__ == '__main__':
+    sys.exit(main())
