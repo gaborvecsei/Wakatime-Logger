@@ -6,7 +6,7 @@ import os
 import configparser
 
 config = configparser.ConfigParser()
-config.read('my_config.ini')
+config.read('config.ini')
 
 FILE_NAME = config.get("Waka", "fileName")
 API_KEY = config.get("Waka", "apiKey")
@@ -65,9 +65,9 @@ def run_the_program():
     if not os.path.exists(FILE_NAME):
         print("It looks like this is the first time you run this script!")
         print("This is the start date: {0}".format(START_DATE))
-        start_date = datetime.strptime(START_DATE, "%Y-%m-%d").date()
+        start_date = START_DATE
         df = pd.DataFrame(columns=["date", "project", "duration"])
-        write_data_to_dataframe(df, start_date, date.today())
+        write_data_to_dataframe(df, start_date, date.today() + timedelta(days=1))
         df.to_csv(FILE_NAME)
     else:
         df = pd.DataFrame.from_csv(FILE_NAME, header=0)
